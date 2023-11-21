@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 
 const sql = mysql.createConnection({
-	// Your connection here
+	// Get from environment variables
 });
 
 sql.connect();
