@@ -1,6 +1,6 @@
 const sql = require("./db");
 
-async function updateColemanGames(games) {
+async function updateGames(games) {
 	// Use map to create an array of promises
 	const promises = games.map(async (game) => {
 		const queryString = `
@@ -13,6 +13,7 @@ async function updateColemanGames(games) {
                 '${game.teamMe}',
                 '${game.opponent}',
                 '${game.opponentLogo}',
+                '${game.opponentUrl}',
                 ${game.location === "Home" ? 1 : 0},
                 ${game.teamMeScore},
                 ${game.teamOpponentScore}
@@ -35,7 +36,7 @@ async function updateColemanGames(games) {
 	return Promise.all(promises);
 }
 
-module.exports = updateColemanGames;
+module.exports = updateGames;
 
 // CREATE PROCEDURE `gameScratchInsert`(
 // 	   p_userId				varchar(30),
